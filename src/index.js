@@ -1,32 +1,18 @@
-import { createStore } from 'redux';
+// https://medium.com/@cramirez92/s-o-l-i-d-the-first-5-priciples-of-object-oriented-design-with-javascript-790f6ac9b9fa
+import { circle, square, rect } from './shapes';
+import { areaCalculator } from './areaCalculator';
+import { sumCalculatorOputter } from './sumCalculatorOputter';
 
-const initialState = {
-  name: 'Paul',
-  secondName: 'Petrov'
-};
+const shapes = [
+  circle(0.5),
+  square(5),
+  rect(10, 5),
+  square(7)
+];
 
-function reducer(state = initialState, action) {
-  switch(action.type) {
-    case 'CHANGE_NAME':
-      return { ...state, name: action.payload}
-    case 'CHANGE_SECOND_NAME':
-      return { ...state, secondName: action.payload}
-  }
-  return state; 
-}
+const areas = areaCalculator(shapes);
+const output = sumCalculatorOputter(areas);
 
-const store = createStore(reducer);
-
-const changeName = {
-  type: 'CHANGE_NAME',
-  payload: 'Ivan'
-};
-
-const changeSecondName = {
-  type: 'CHANGE_SECOND_NAME',
-  payload: 'Pereverziev'
-};
-
-store.dispatch(changeName);
-store.dispatch(changeSecondName);
-console.log(store.getState());
+console.log(output.JSON());
+output.HTML(document.getElementById('areas_sum'));
+//output.ALERT()
