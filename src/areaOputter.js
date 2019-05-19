@@ -1,4 +1,4 @@
-export const sumCalculatorOputter = (areas) => {
+export const areaOputter = (areas) => {
   const proto = {
 
     JSON() {
